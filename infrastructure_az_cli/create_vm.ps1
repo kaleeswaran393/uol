@@ -83,10 +83,12 @@ try {
     az vm create  `
         --resource-group $resourceGroupName `
         --name $serverName `
-        --image win2016datacenter `
+        --image Win2022Datacenter `
         --admin-username $adminLogin `
-        --admin-password $adminPassword
+        --admin-password $adminPassword `
+        --public-ip-sku Standard
     }
+
 catch {
     Write-Output "VM already exists"
     }
