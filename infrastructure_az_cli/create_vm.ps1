@@ -89,8 +89,8 @@ try {
     az vm create  `
         --resource-group $resourceGroupName `
         --name $serverName `
-        --image Win2019Datacenter  `
-        --size Standard_DC2ds_v3 `
+        --image Win2016Datacenter  `
+        --size Standard_DC4ds_v3 `
         --admin-username $adminLogin `
         --admin-password $adminPassword `
         --public-ip-sku Standard
