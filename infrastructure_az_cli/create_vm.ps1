@@ -89,7 +89,8 @@ try {
     az vm create  `
         --resource-group $resourceGroupName `
         --name $serverName `
-        --image Win2022atacenter `
+        --image Win2022Datacenter  `
+        --size Standard_DC1ds_v3 `
         --admin-username $adminLogin `
         --admin-password $adminPassword `
         --public-ip-sku Standard
