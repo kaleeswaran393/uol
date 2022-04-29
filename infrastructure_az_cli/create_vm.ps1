@@ -61,23 +61,20 @@ Write-Output "Done"
 Write-Output ""
 #endregion
 
+Write-Output "Assign subscription to service principle..."
+az role assignment create --assignee cd5fad2d-8d17-493d-81f8-d7583cd55eae --role Owner   --subscription ba5cad7f-06ec-4765-aec0-c3caed478b73
+Write-Output "Done"
+Write-Output ""
 
+#region Create Resource Group
+# This creates the resource group used to house the VM
+Write-Output "Creating resource group $resourceGroupName in region $resourceGroupNameRegion..."
 az group create `
     --name $resourceGroupName `
     --location $resourceGroupNameRegion
     Write-Output "Done creating resource group"
     Write-Output ""
  #endregion
-
- Write-Output "Grant RBAC permission to create resource..."
- az ad sp create-for-rbac   --scopes /subscriptions/ba5cad7f-06ec-4765-aec0-c3caed478b73  --role Owner  --scopes /subscriptions/ba5cad7f-06ec-4765-aec0-c3caed478b73/resourceGroups/*
-Write-Output "Done RBAC"
-    Write-Output ""
-    
-#region Create Resource Group
-# This creates the resource group used to house the VM
-Write-Output "Creating resource group $resourceGroupName in region $resourceGroupNameRegion..."
-
 
 #region Create VM
 # Create a VM in the resource group
