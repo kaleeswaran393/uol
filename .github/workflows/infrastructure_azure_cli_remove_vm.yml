@@ -1,4 +1,4 @@
-name: GitHub for IT Pro CI/CD Pipeline
+name: Remove Azure UOL VM
 
 env:
   OUTPUT_PATH: ${{ github.workspace }}

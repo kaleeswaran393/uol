@@ -1,4 +1,4 @@
-name: GitHub for IT Pro CI/CD Pipeline
+name: Create UOL VM on Azure 
 
 env:
   OUTPUT_PATH: ${{ github.workspace }}
