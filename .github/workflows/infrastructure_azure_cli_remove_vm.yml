@@ -14,8 +14,6 @@ on:
       - main
     paths:
       - 'infrastructure_az_cli_remove/**'
-
-
 jobs:
       
   DeployVM:
