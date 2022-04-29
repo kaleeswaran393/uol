@@ -14,11 +14,7 @@ on:
       - main
     paths:
       - 'infrastructure_az_cli_remove/**'
-    paths-ignore:
-      - 'infrastructure_az_cli/**'
-      - 'infrastructure_arm/**'
-      - 'infrastructure_terraform/**'
-      - 'uol-backend-service/**'
+
 
 jobs:
       
