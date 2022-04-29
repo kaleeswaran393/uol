@@ -62,7 +62,7 @@ Write-Output ""
 #endregion
 
 Write-Output "Grant RBAC permission to create resource..."
-  ad sp create-for-rbac   --scopes /subscriptions/ba5cad7f-06ec-4765-aec0-c3caed478b73  --role Owner  --scopes /subscriptions/ba5cad7f-06ec-4765-aec0-c3caed478b73/resourceGroups/*
+ az ad sp create-for-rbac   --scopes /subscriptions/ba5cad7f-06ec-4765-aec0-c3caed478b73  --role Owner  --scopes /subscriptions/ba5cad7f-06ec-4765-aec0-c3caed478b73/resourceGroups/*
 Write-Output "Done RBAC"
     Write-Output ""
 #region Create Resource Group
