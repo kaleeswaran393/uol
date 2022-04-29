@@ -9,11 +9,7 @@ on:
       - main
     paths:
       - 'infrastructure_az_cli/**'
-    paths-ignore:
-      - 'infrastructure_az_cli_remove/**'
-      - 'infrastructure_arm/**'
-      - 'infrastructure_terraform/**'
-      - 'uol-backend-service/**'
+
 
 jobs:
       
