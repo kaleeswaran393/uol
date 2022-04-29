@@ -31,7 +31,7 @@ jobs:
         SERVER_NAME: uol_invoice_app_server
         ADMIN_LOGIN: uol_admin
       run: >
-        powershell -command "& '${{ env.OUTPUT_PATH }}\infrastrcuture_az_cli_remove\delete_vm_resource.ps1'"
+        powershell -command "& '${{ env.OUTPUT_PATH }}\infrastructure_az_cli_remove\delete_vm_resource.ps1'"
         -servicePrincipal ${{ secrets.SERVICE_PRINCIPAL_APPID }}
         -servicePrincipalSecret ${{ secrets.SERVICE_PRINCIPAL_SECRET }} 
         -servicePrincipalTenantId ${{ secrets.SERVICE_PRINCIPAL_TENANTID }} 
