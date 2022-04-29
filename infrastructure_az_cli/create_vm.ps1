@@ -76,6 +76,12 @@ az group create `
     Write-Output ""
  #endregion
 
+ Write-Output "Assign subscription to service principle..."
+ az role assignment create --assignee cd5fad2d-8d17-493d-81f8-d7583cd55eae --role Owner   --subscription ba5cad7f-06ec-4765-aec0-c3caed478b73 --resource-group $resourceGroupName
+Write-Output "Done"
+Write-Output ""
+
+
 #region Create VM
 # Create a VM in the resource group
 Write-Output "Creating VM..."
@@ -83,7 +89,7 @@ try {
     az vm create  `
         --resource-group $resourceGroupName `
         --name $serverName `
-        --image Win2022Datacenter `
+        --image Win2022atacenter `
         --admin-username $adminLogin `
         --admin-password $adminPassword `
         --public-ip-sku Standard

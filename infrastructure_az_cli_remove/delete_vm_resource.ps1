@@ -54,7 +54,7 @@ Write-Output ""
 # This creates the resource group used to house the VM
 Write-Output "Delete VM ResourceGroup $resourceGroupName in region $resourceGroupNameRegion..."
 
-az group delete --name  $resourceGroupName --location $resourceGroupNameRegion
+az group delete --name  $resourceGroupName --yes
 
 #endregion
 
