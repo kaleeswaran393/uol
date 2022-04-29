@@ -22,19 +22,8 @@ param(
 
     [Parameter(Mandatory = $True)]
     [string]
-    $resourceGroupNameRegion,
+    $resourceGroupNameRegion
 
-    [Parameter(Mandatory = $True)]  
-    [string]
-    $serverName,
-
-    [Parameter(Mandatory = $True)]  
-    [string]
-    $adminLogin,
-
-    [Parameter(Mandatory = $True)]  
-    [String]
-    $adminPassword
 )
 
 
@@ -63,28 +52,10 @@ Write-Output ""
 
 #region Create Resource Group
 # This creates the resource group used to house the VM
-Write-Output "Creating resource group $resourceGroupName in region $resourceGroupNameRegion..."
-az group create `
-    --name $resourceGroupName `
-    --location $resourceGroupNameRegion
-    Write-Output "Done creating resource group"
-    Write-Output ""
- #endregion
+Write-Output "Delete VM ResourceGroup $resourceGroupName in region $resourceGroupNameRegion..."
 
-#region Create VM
-# Create a VM in the resource group
-Write-Output "Creating VM..."
-try {
-    az vm create  `
-        --resource-group $resourceGroupName `
-        --name $serverName `
-        --image win2016datacenter `
-        --admin-username $adminLogin `
-        --admin-password $adminPassword
-    }
-catch {
-    Write-Output "VM already exists"
-    }
-Write-Output "Done creating VM"
-Write-Output ""
+az group delete --name  $resourceGroupName --location $resourceGroupNameRegion
+
 #endregion
+
+
