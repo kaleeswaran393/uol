@@ -13,21 +13,33 @@ on:
 
 jobs:
       
-  # Deploy VM in Azure TEST
   DeployVM:
     runs-on: windows-latest
     steps:
-    - name: remove virtual machine in azure
+    # checkout code from repo
+    - name: checkout repo
+      uses: actions/checkout@v1
+
+    - name: look for ps1 file
+      run: |
+        ls '${{ env.OUTPUT_PATH }}'
+        
+    - name: provision virtual machine in azure
       env:
         RESOURCE_GROUP: uol_vm_resource_group
         RESOURCE_GROUP_REGION: southeastasia
+        SERVER_NAME: uol_invoice_app_server
+        ADMIN_LOGIN: uol_admin
       run: >
-        powershell -command "& '${{ env.OUTPUT_PATH }}\infrastructure_az_cli\create_vm.ps1'"
+        powershell -command "& '${{ env.OUTPUT_PATH }}\infrastrcuture_az_cli_remove\delete_vm_resource.ps1'"
         -servicePrincipal ${{ secrets.SERVICE_PRINCIPAL_APPID }}
         -servicePrincipalSecret ${{ secrets.SERVICE_PRINCIPAL_SECRET }} 
         -servicePrincipalTenantId ${{ secrets.SERVICE_PRINCIPAL_TENANTID }} 
         -azureSubscriptionName ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         -resourceGroupName %RESOURCE_GROUP% 
         -resourceGroupNameRegion %RESOURCE_GROUP_REGION% 
+        -serverName %SERVER_NAME% 
+        -adminLogin %ADMIN_LOGIN% 
+        -adminPassword ${{ secrets.VM_ADMIN_PASSWORD }} 
 
 
