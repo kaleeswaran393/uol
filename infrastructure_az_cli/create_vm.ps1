@@ -90,7 +90,7 @@ try {
         --resource-group $resourceGroupName `
         --name $serverName `
         --image Win2016Datacenter  `
-        --size Standard_DC4ds_v3 `
+        --size Standard_D1_v2 `
         --admin-username $adminLogin `
         --admin-password $adminPassword `
         --public-ip-sku Standard
