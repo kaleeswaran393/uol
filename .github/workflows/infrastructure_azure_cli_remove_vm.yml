@@ -5,10 +5,20 @@ env:
 
 on: 
   push:
+    workflow_run:
+      workflows: ["Create UOL VM on Azure"]
+      branches: [main]
+      types:
+        - completed
     branches: 
       - main
     paths:
       - 'infrastructure_az_cli_remove/**'
+    paths-ignore:
+      - 'infrastructure_az_cli/**'
+      - 'infrastructure_arm/**'
+      - 'infrastructure_terraform/**'
+      - 'uol-backend-service/**'
 
 jobs:
       

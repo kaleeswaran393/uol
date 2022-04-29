@@ -9,15 +9,18 @@ on:
       - main
     paths:
       - 'infrastructure_az_cli/**'
+    paths-ignore:
+      - 'infrastructure_az_cli_remove/**'
+      - 'infrastructure_arm/**'
+      - 'infrastructure_terraform/**'
+      - 'uol-backend-service/**'
 
 jobs:
       
   # Deploy VM in Azure
   DeployVM:
     runs-on: windows-latest
-
     steps:
-    
     - name: remove virtual machine in azure
       env:
         RESOURCE_GROUP: uol_vm_resource_group
