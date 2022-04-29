@@ -86,7 +86,7 @@ try {
         --image Win2022Datacenter `
         --admin-username $adminLogin `
         --admin-password $adminPassword `
-        --public-ip-sku 
+        --public-ip-sku Standard
     }
 
 catch {
