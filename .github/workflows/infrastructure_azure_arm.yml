@@ -40,7 +40,7 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: uol_vm_resource_group
-        template: ${{ env.OUTPUT_PATH }}/infrastructure_arm/deployment.json
+        template: ${{ env.OUTPUT_PATH }}/infrastructure_arm/uol_invoice_vm.json
         #parameters: storageAccountType=Standard_LRS
 
       # output containerName variable from template
