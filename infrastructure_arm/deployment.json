@@ -8,7 +8,7 @@
       "networkInterfaceName":      {
           "type": "String"
       },
-      "enableAcceleratedNetworking":     {
+      "enableAcceleratedNetworking":      {
           "type": "Bool"
       },
       "networkSecurityGroupName": {

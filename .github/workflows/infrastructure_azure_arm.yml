@@ -1,7 +1,3 @@
-name: Create VM Using ARM
-
-env:
-  OUTPUT_PATH: ${{ github.workspace }}
 
 on: 
   push: 
@@ -11,6 +7,8 @@ on:
       - 'infrastructure_arm/**'
 
 name: Azure ARM Template To Create VM
+env:
+  OUTPUT_PATH: ${{ github.workspace }}
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
