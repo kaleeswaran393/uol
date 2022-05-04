@@ -5,7 +5,7 @@
       "location": {
           "type": "String"
       },
-      "networkInterfaceName":     {
+      "networkInterfaceName":      {
           "type": "String"
       },
       "enableAcceleratedNetworking":   {
