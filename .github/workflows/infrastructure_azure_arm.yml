@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: look for ps1 file
-      run: |
-        az --help
+    - name: look for ps1 file
+    run: |
+      az --help
 
       # Checkout code
       # az role assignment create --assignee cd5fad2d-8d17-493d-81f8-d7583cd55eae --role Owner   --subscription ba5cad7f-06ec-4765-aec0-c3caed478b73
