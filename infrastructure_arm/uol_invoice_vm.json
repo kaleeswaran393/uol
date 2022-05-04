@@ -135,6 +135,7 @@
                 "osProfile": {
                     "computerName": "uolinvoiceappserver",
                     "adminUsername": "uol_admin",
+                    "adminPassword" : "Uol_admin_Passward893$",
                     "linuxConfiguration": {
                         "disablePasswordAuthentication": false,
                         "provisionVMAgent": true,
