@@ -14,7 +14,7 @@
       "networkSecurityGroupName": {
           "type": "String"
       },
-      "networkSecurityGroupRules": {
+      "networkSecurityGroupRules":  {
           "type": "Array"
       },
       "subnetName": {

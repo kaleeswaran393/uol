@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - name: look for ps1 file
+      run: |
+        az --help
+
       # Checkout code
       # az role assignment create --assignee cd5fad2d-8d17-493d-81f8-d7583cd55eae --role Owner   --subscription ba5cad7f-06ec-4765-aec0-c3caed478b73
       # az ad sp create-for-rbac --name uol --role contributor --scopes /subscriptions/ba5cad7f-06ec-4765-aec0-c3caed478b73/resourceGroups/uol_vm_resource_group --sdk-auth
@@ -27,7 +31,7 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: uol_vm_resource_group
-        template: ${{ env.OUTPUT_PATH }}/infrastructure_az_cli_remove/deployment.json
+        template: ${{ env.OUTPUT_PATH }}/infrastructure_arm/deployment.json
         #parameters: storageAccountType=Standard_LRS
 
       # output containerName variable from template
