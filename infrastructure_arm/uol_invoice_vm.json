@@ -125,9 +125,8 @@
                         "createOption": "FromImage",
                         "caching": "ReadWrite",
                         "managedDisk": {
-                            "storageAccountType": "Premium_LRS",
-                            "id": "[resourceId('Microsoft.Compute/disks', concat(parameters('virtualMachines_uol_invoice_app_server_name'), '_disk1_1dadf667331748af966c411494acc4e0'))]"
-                        },
+                            "storageAccountType": "Premium_LRS"
+                          },
                         "deleteOption": "Detach",
                         "diskSizeGB": 30
                     },
