@@ -28,7 +28,7 @@ param(
 
 
 #region Login
-# This logs into Azure with a Service Principal Account test ff
+# This logs into Azure with a Service Principal Account test delete
 #
 Write-Output "Logging in to Azure with a service principal..."
 az login `
