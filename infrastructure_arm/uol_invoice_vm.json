@@ -229,7 +229,7 @@
                 "networkSecurityGroup": {
                     "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_uol_invoice_app_serverNSG_name'))]"
                 }
-            }
+              }
         }
     ]
 }
