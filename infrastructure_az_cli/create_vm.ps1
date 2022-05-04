@@ -89,8 +89,8 @@ try {
     az vm create  `
         --resource-group $resourceGroupName `
         --name $serverName `
-        --image Win2016Datacenter  `
-        --size Standard_DC4ds_v3 `
+        --image canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest  `
+        --size Standard_E2bds_v5 `
         --admin-username $adminLogin `
         --admin-password $adminPassword `
         --public-ip-sku Standard
