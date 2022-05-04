@@ -18,6 +18,9 @@ jobs:
         echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
         sudo apt-get update
         sudo apt-get install azure-cli
+    - name: look for ps1 file
+      run: |
+        az --help
       # Checkout code
       # az role assignment create --assignee cd5fad2d-8d17-493d-81f8-d7583cd55eae --role Owner   --subscription ba5cad7f-06ec-4765-aec0-c3caed478b73
       # az ad sp create-for-rbac --name uol --role contributor --scopes /subscriptions/ba5cad7f-06ec-4765-aec0-c3caed478b73/resourceGroups/uol_vm_resource_group --sdk-auth
