@@ -10,6 +10,14 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+    - name: Install Azure cli
+      run: |
+        sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
+        curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+        AZ_REPO=$(lsb_release -cs)
+        echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
+        sudo apt-get update
+        sudo apt-get install azure-cli
       # Checkout code
       # az role assignment create --assignee cd5fad2d-8d17-493d-81f8-d7583cd55eae --role Owner   --subscription ba5cad7f-06ec-4765-aec0-c3caed478b73
       # az ad sp create-for-rbac --name uol --role contributor --scopes /subscriptions/ba5cad7f-06ec-4765-aec0-c3caed478b73/resourceGroups/uol_vm_resource_group --sdk-auth
