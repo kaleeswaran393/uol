@@ -21,7 +21,7 @@ jobs:
     - name: look for ps1 file
       run: |
         ls '${{ env.OUTPUT_PATH }}'
-        ${{secrets.UOL_SSH_KEY }} > ${{ env.OUTPUT_PATH }}/sec.pub
+        '${{secrets.UOL_SSH_KEY }}' > ${{ env.OUTPUT_PATH }}/sec.pub
         ls ${{ env.OUTPUT_PATH }}
         
     - name: provision virtual machine in azure
