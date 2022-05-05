@@ -21,7 +21,7 @@ jobs:
       - name: look for ps1 file
         run: |
           ls '${{ env.OUTPUT_PATH }}'
-          '${{secrets.SSH_PRIVATE_KEY }}' > ${{ env.OUTPUT_PATH }}/uoll
+          "${{secrets.SSH_PRIVATE_KEY }}" > ${{ env.OUTPUT_PATH }}/uoll
           ls ${{ env.OUTPUT_PATH }}
           
       - name: Build
