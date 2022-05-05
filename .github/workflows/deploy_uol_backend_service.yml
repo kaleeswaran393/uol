@@ -41,6 +41,6 @@ jobs:
           
       - name: Deployyy
         run: |
-          ssh -i ${{ env.OUTPUT_PATH }}/uolll uol_admin@20.43.168.65 "sudo apt install nodejs npm -y"
+          ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo apt install nodejs npm -y"
           ls ${{ env.OUTPUT_PATH }} ;
 
