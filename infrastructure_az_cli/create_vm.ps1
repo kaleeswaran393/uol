@@ -88,7 +88,7 @@ Write-Output ""
 
 
 #region Create VM
-# Create a VM in the resource group nnb
+# Create a VM in the resource group nnb dd
 Write-Output "Creating VM..."
 
 try {
