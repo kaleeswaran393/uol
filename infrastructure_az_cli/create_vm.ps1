@@ -34,7 +34,12 @@ param(
 
     [Parameter(Mandatory = $True)]  
     [String]
-    $adminPassword
+    $adminPassword,
+
+    [Parameter(Mandatory = $True)]  
+    [String]
+    $uolsshkey
+    
 )
 
 
@@ -92,7 +97,7 @@ try {
         --image canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest  `
         --size Standard_E2bds_v5 `
         --admin-username $adminLogin `
-        --generate-ssh-keys `
+        --ssh-keys-value $uolsshkey `
         --custom-data cloud-init-github.txt `
         --public-ip-sku Standard
     }
