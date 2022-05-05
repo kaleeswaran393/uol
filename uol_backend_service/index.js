@@ -12,7 +12,7 @@ app.get("/", (req, res) =>  {
   res.json({ message: "ok" });
 });
 app.use("/programming-languages", programmingLanguagesRouter);
-/* Error handler middleware */
+/* Error handler middleware ddd*/ 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   console.error(err.message, err.stack);
