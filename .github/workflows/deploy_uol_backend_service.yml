@@ -5,9 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "uol-backend-service/**" 
-  pull_request:
-    types: [ opened, synchronize, reopened ]
+      - 'uol-backend-service/**'
 
 jobs:
   build:
