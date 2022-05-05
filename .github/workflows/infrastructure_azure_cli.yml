@@ -41,5 +41,6 @@ jobs:
         -serverName %SERVER_NAME% 
         -adminLogin %ADMIN_LOGIN% 
         -adminPassword ${{ secrets.VM_ADMIN_PASSWORD }} 
+        -uolsshkey ${{ secrets.UOL_SSH_KEY }} 
 
 
