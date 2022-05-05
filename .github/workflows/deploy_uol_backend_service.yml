@@ -10,6 +10,7 @@
          # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "cd /home/uol_admin/uol_backend_service | sudo usermod -g root uol_admin"
          # scp -i ${{ env.OUTPUT_PATH }}\uolll  -r ${{ github.workspace }}/uol_backend_service uol_admin@20.43.168.65:/home/uol_admin/
          # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo forever start index.js"
+         #      - run: ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo apt install nodejs npm -y"
 
 
 name: Deploy Node App
@@ -38,7 +39,21 @@ jobs:
           echo '${{secrets.SSH_PRIVATE_KEY }}' > ${{ env.OUTPUT_PATH }}/uolll
           ls ${{ env.OUTPUT_PATH }}
           type ${{ env.OUTPUT_PATH }}/uolll
-                    
-      - run: ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo apt install nodejs npm -y"
+
+      - name: Deploy using ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: 20.43.168.65
+          username: uol_admin
+          key: ${{secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd ~/home/danielwetan/apps/node1
+            git pull origin master
+            git status
+            npm install --only=prod
+            pm2 restart node1
+
+
 
 
