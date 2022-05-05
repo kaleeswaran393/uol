@@ -5,7 +5,7 @@ on:
     branches: 
       - main
     paths:
-      - 'uol-backend-service/**'
+      - 'uol_backend_service/**'
 
 jobs:
   build:
@@ -33,7 +33,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Build
-        working-directory: ./uol-backend-service # Make sure we run our UI commands in the UI directory
+        working-directory: ./uol_backend_service # Make sure we run our UI commands in the UI directory
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         run: |
