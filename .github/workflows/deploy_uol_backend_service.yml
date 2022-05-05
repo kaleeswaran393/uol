@@ -30,16 +30,6 @@ jobs:
     name: Deploy Node App
     runs-on: ubuntu-latest
     steps:
-      - name: checkout repo
-        uses: actions/checkout@v1
-
-      - name: look for ps1 file
-        run: |
-          ls '${{ env.OUTPUT_PATH }}'
-    #      echo '${{secrets.SSH_PRIVATE_KEY }}' > ${{ env.OUTPUT_PATH }}/uolll
-    #      ls ${{ env.OUTPUT_PATH }}
-    #      type ${{ env.OUTPUT_PATH }}/uolll
-
       - name: Deploy using ssh
         uses: appleboy/ssh-action@master
         with:
