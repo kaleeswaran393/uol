@@ -28,11 +28,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Set SSH Key
-        run: |
-          ls '${{ env.OUTPUT_PATH }}'
-          '${{secrets.UOL_SSH_KEY }}' > ${{ env.OUTPUT_PATH }}/sec.pub
-
       - name: Cache NPM packages
         uses: actions/cache@v2.1.4
         with:
