@@ -21,20 +21,24 @@ jobs:
       - name: look for ps1 file
         run: |
           ls '${{ env.OUTPUT_PATH }}'
-          echo "${{secrets.SSH_PRIVATE_KEY }}" > ${{ env.OUTPUT_PATH }}/uolll
+          echo '${{secrets.SSH_PRIVATE_KEY }}' > ${{ env.OUTPUT_PATH }}/uolll
           ls ${{ env.OUTPUT_PATH }}
           type ${{ env.OUTPUT_PATH }}/uolll
           
       - name: Build
-        working-directory: ./uol_backend_service # Make sure we run our UI commands in the UI directory
         run: | 
-          ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo apt install nodejs npm -y"
-          ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm i express -y"
-          ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm i mysql2 -y"
-          ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm install forever -g"
-          ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo mkdir  /home/uol_admin/uol_backend_service"
-          ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo chown -R uol_admin:root /home/uol_admin/uol_backend_service"
-          ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "cd /home/uol_admin/uol_backend_service | sudo usermod -g root uol_admin"
-          scp -i ${{ env.OUTPUT_PATH }}\uolll  -r ${{ github.workspace }}/uol_backend_service uol_admin@20.43.168.65:/home/uol_admin/
-          ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo forever start index.js"
+          ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 sudo apt install nodejs npm -y
+    
+
+
+
+
+         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm i express -y"
+         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm i mysql2 -y"
+        #  ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm install forever -g"
+         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo mkdir  /home/uol_admin/uol_backend_service"
+        #  ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo chown -R uol_admin:root /home/uol_admin/uol_backend_service"
+         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "cd /home/uol_admin/uol_backend_service | sudo usermod -g root uol_admin"
+         # scp -i ${{ env.OUTPUT_PATH }}\uolll  -r ${{ github.workspace }}/uol_backend_service uol_admin@20.43.168.65:/home/uol_admin/
+         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo forever start index.js"
 
