@@ -28,10 +28,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: look for ps1 file
-      run: |
-        ls '${{ env.OUTPUT_PATH }}'
-        '${{secrets.SSH_PRIVATE_KEY }}' > ${{ env.OUTPUT_PATH }}/uol2.pub
-        ls ${{ env.OUTPUT_PATH }}
+        run: |
+          ls '${{ env.OUTPUT_PATH }}'
+          '${{secrets.SSH_PRIVATE_KEY }}' > ${{ env.OUTPUT_PATH }}/uol2.pub
+          ls ${{ env.OUTPUT_PATH }}
 
       - name: Cache NPM packages
         uses: actions/cache@v2.1.4
