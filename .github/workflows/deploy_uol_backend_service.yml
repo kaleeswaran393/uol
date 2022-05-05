@@ -39,3 +39,4 @@ jobs:
         run: |
           npm i express
           npm i mysql2
+          ls 
