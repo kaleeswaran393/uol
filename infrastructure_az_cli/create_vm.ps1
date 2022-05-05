@@ -34,11 +34,7 @@ param(
 
     [Parameter(Mandatory = $True)]  
     [String]
-    $adminPassword,
-
-    [Parameter(Mandatory = $True)]  
-    [String]
-    $uolsshkey
+    $adminPassword
 )
 
 
