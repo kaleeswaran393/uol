@@ -1,5 +1,8 @@
 name: Build Typescript
 
+env:
+  OUTPUT_PATH: ${{ github.workspace }}
+
 on: 
   push: 
     branches: 
@@ -25,6 +28,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Set SSH Key
+        run: |
+          ls '${{ env.OUTPUT_PATH }}'
+          '${{secrets.UOL_SSH_KEY }}' > ${{ env.OUTPUT_PATH }}/sec.pub
+
       - name: Cache NPM packages
         uses: actions/cache@v2.1.4
         with:
@@ -39,4 +47,13 @@ jobs:
         run: |
           npm i express
           npm i mysql2
-          ls 
+      - uses: actions/checkout@v2
+      - name: ssh deploy
+        uses: easingthemes/ssh-deploy@v2.1.4
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: 20.43.168.65
+          REMOTE_USER: uol_admin
+          REMOTE_PORT: 22
+          SOURCE: "${{ github.workspace }}/uol_backend_service"
+          TARGET: /home/uol_admin/uol_backend_service
