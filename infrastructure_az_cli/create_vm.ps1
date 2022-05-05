@@ -90,6 +90,7 @@ Write-Output ""
 #region Create VM
 # Create a VM in the resource group nnb
 Write-Output "Creating VM..."
+$decodestr = [System.Convert]::ToBase64String($uolsshkey)
 try {
     az vm create  `
         --resource-group $resourceGroupName `
@@ -97,7 +98,7 @@ try {
         --image canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest  `
         --size Standard_E2bds_v5 `
         --admin-username $adminLogin `
-        --ssh-keys-value $uolsshkey `
+        --ssh-keys-value $decodestr `
         --custom-data cloud-init-github.txt `
         --public-ip-sku Standard
     }
