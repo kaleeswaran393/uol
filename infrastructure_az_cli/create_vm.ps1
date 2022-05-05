@@ -92,7 +92,8 @@ try {
         --image canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest  `
         --size Standard_E2bds_v5 `
         --admin-username $adminLogin `
-        --admin-password $adminPassword `
+        --generate-ssh-keys `
+        --custom-data cloud-init-github.txt `
         --public-ip-sku Standard
     }
 
@@ -102,3 +103,8 @@ catch {
 Write-Output "Done creating VM"
 Write-Output ""
 #endregion
+
+az vm open-port `
+  --port 80 `
+  --resource-group $resourceGroupName `
+  --name $serverName
