@@ -27,6 +27,11 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: ${{ matrix.node-version }}
+      - name: look for ps1 file
+      run: |
+        ls '${{ env.OUTPUT_PATH }}'
+        '${{secrets.SSH_PRIVATE_KEY }}' > ${{ env.OUTPUT_PATH }}/uol2.pub
+        ls ${{ env.OUTPUT_PATH }}
 
       - name: Cache NPM packages
         uses: actions/cache@v2.1.4
@@ -39,16 +44,13 @@ jobs:
         working-directory: ./uol_backend_service # Make sure we run our UI commands in the UI directory
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
-        run: |
-          npm i express
-          npm i mysql2
-      - uses: actions/checkout@v2
-      - name: ssh deploy
-        uses: easingthemes/ssh-deploy@v2.1.4
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: 20.43.168.65
-          REMOTE_USER: uol_admin
-          REMOTE_PORT: 22
-          SOURCE: "${{ github.workspace }}/uol_backend_service"
-          TARGET: /home/uol_admin/uol_backend_service
+        run: | 
+          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} uol_admin@20.43.168.65 "npm i express"
+          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} uol_admin@20.43.168.65 "npm i mysql2"
+          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} uol_admin@20.43.168.65 "npm install forever -g"
+          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} uol_admin@20.43.168.65 "sudo mkdir -R /home/uol_admin/uol_backend_service"
+          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} uol_admin@20.43.168.65 "sudo chown -R uol_admin:root /home/uol_admin/uol_backend_service"
+          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} uol_admin@20.43.168.65 "cd /home/uol_admin/uol_backend_service | sudo usermod -g root uol_admin"
+          scp -i ${{ env.OUTPUT_PATH }}/uol2.pub  -r ${{ github.workspace }}/uol_backend_service uol_admin@20.43.168.65:/home/uol_admin/uol_backend_service
+          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} uol_admin@20.43.168.65 "forever start index.js"
+

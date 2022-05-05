@@ -42,7 +42,7 @@ async function create(programmingLanguage){
     return {message};
   }
 
-  async function update(id, programmingLanguage){
+  async function update(id, programmingLanguage) {
     const result = await db.query(
       `UPDATE programming_languages 
       SET name="${programmingLanguage.name}", released_year=${programmingLanguage.released_year}, githut_rank=${programmingLanguage.githut_rank}, 
