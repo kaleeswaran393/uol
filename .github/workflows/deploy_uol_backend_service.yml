@@ -28,7 +28,7 @@ on:
 jobs:
   build:
     name: Deploy Node App
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: checkout repo
         uses: actions/checkout@v1
@@ -36,9 +36,9 @@ jobs:
       - name: look for ps1 file
         run: |
           ls '${{ env.OUTPUT_PATH }}'
-          echo '${{secrets.SSH_PRIVATE_KEY }}' > ${{ env.OUTPUT_PATH }}/uolll
-          ls ${{ env.OUTPUT_PATH }}
-          type ${{ env.OUTPUT_PATH }}/uolll
+    #      echo '${{secrets.SSH_PRIVATE_KEY }}' > ${{ env.OUTPUT_PATH }}/uolll
+    #      ls ${{ env.OUTPUT_PATH }}
+    #      type ${{ env.OUTPUT_PATH }}/uolll
 
       - name: Deploy using ssh
         uses: appleboy/ssh-action@master
@@ -48,8 +48,8 @@ jobs:
           key: ${{secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd ~/home/danielwetan/apps/node1
-            git pull origin master
+            cd ~/home/uol_admin/uol_backend_service
+            git pull origin main
             git status
             npm install --only=prod
             pm2 restart node1
