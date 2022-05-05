@@ -1,3 +1,17 @@
+
+
+
+
+         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm i express -y"
+         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm i mysql2 -y"
+        #  ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm install forever -g"
+         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo mkdir  /home/uol_admin/uol_backend_service"
+        #  ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo chown -R uol_admin:root /home/uol_admin/uol_backend_service"
+         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "cd /home/uol_admin/uol_backend_service | sudo usermod -g root uol_admin"
+         # scp -i ${{ env.OUTPUT_PATH }}\uolll  -r ${{ github.workspace }}/uol_backend_service uol_admin@20.43.168.65:/home/uol_admin/
+         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo forever start index.js"
+
+
 name: Deploy Node App
 
 env:
@@ -26,20 +40,7 @@ jobs:
           type ${{ env.OUTPUT_PATH }}/uolll
           
       - name: Build
-        run: | 
-          ssh -i ${{ env.OUTPUT_PATH }}/uoll uol_admin@20.43.168.65 sudo apt install nodejs npm -y
-          ls ${{ env.OUTPUT_PATH }}
-    
-
-
-
-
-         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm i express -y"
-         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm i mysql2 -y"
-        #  ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm install forever -g"
-         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo mkdir  /home/uol_admin/uol_backend_service"
-        #  ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo chown -R uol_admin:root /home/uol_admin/uol_backend_service"
-         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "cd /home/uol_admin/uol_backend_service | sudo usermod -g root uol_admin"
-         # scp -i ${{ env.OUTPUT_PATH }}\uolll  -r ${{ github.workspace }}/uol_backend_service uol_admin@20.43.168.65:/home/uol_admin/
-         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo forever start index.js"
+        run: >
+          ssh -i ${{ env.OUTPUT_PATH }}/uolll uol_admin@20.43.168.65 sudo apt install nodejs npm -y ;
+          ls ${{ env.OUTPUT_PATH }} ;
 
