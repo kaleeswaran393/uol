@@ -19,7 +19,7 @@ async function getMultiple(page = 1) {
   }
 }
 
-async function create(programmingLanguage){
+async function create(programmingLanguage) {
 
     const ss = `INSERT INTO programming_languages (first_name, released_year, githut_rank, pypl_rank, tiobe_rank) 
     VALUES 

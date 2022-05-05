@@ -18,10 +18,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+       #           '${{secrets.SSH_PRIVATE_KEY }}' > '${{ env.OUTPUT_PATH }}'/uol2.pub   
       - name: look for ps1 file
         run: |
-          ls '${{ env.OUTPUT_PATH }}'
-          '${{secrets.SSH_PRIVATE_KEY }}' > ${{ env.OUTPUT_PATH }}/uol2.pub
           ls '${{ env.OUTPUT_PATH }}'
       - name: Build
         working-directory: ./uol_backend_service # Make sure we run our UI commands in the UI directory
