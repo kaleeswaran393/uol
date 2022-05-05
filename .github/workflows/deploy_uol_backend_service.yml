@@ -14,10 +14,6 @@ jobs:
   build:
     name: Build Typescript
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
       - uses: actions/checkout@v2
         with:
@@ -29,8 +25,6 @@ jobs:
           ls ${{ env.OUTPUT_PATH }}
       - name: Build
         working-directory: ./uol_backend_service # Make sure we run our UI commands in the UI directory
-        env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         run: | 
           ssh -i ${{ env.OUTPUT_PATH }}/uol2.pub uol_admin@20.43.168.65 "npm i express"
           ssh -i ${{ env.OUTPUT_PATH }}/uol2.pub uol_admin@20.43.168.65 "npm i mysql2"
