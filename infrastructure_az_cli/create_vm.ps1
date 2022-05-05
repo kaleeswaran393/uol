@@ -96,13 +96,13 @@ try {
         --image canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest  `
         --size Standard_E2bds_v5 `
         --admin-username $adminLogin `
-        --ssh-key-value  $uolsshkey `
+        --ssh-key-value  "$uolsshkey" `
         --custom-data cloud-init-github.yml `
         --public-ip-sku Standard
     }
 
 catch {
-    Write-Output "VM already exists"
+        Write-Output "VM already exists"
     }
 Write-Output "Done creating VM"
 Write-Output ""
