@@ -39,8 +39,7 @@ jobs:
           ls ${{ env.OUTPUT_PATH }}
           type ${{ env.OUTPUT_PATH }}/uolll
           
-      - name: Build
-        run: >
-          ssh -i ${{ env.OUTPUT_PATH }}/uolll uol_admin@20.43.168.65 sudo apt install nodejs npm -y ;
-          ls ${{ env.OUTPUT_PATH }} ;
+      - name: Deployyy
+        run: |
+          ls ${{ env.OUTPUT_PATH }} 
 
