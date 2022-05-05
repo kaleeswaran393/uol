@@ -39,7 +39,7 @@ jobs:
           port: 22
           script: |
             cd ~
-            rm -R -y uol
+            rm -R -f uol
             git clone https://uol_admin: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@github.com/kaleeswaran393/uol.git
             sudo apt install nodejs npm -y
             sudo npm i express -y
