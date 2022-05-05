@@ -3,8 +3,7 @@ name: Build Typescript
 on:
   push:
     branches:
-      - master
-      - develop
+      - main
     paths:
       - "uol-backend-service/**" 
   pull_request:
