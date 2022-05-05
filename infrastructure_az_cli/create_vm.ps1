@@ -111,4 +111,4 @@ Write-Output ""
 az vm open-port `
   --port 80 `
   --resource-group $resourceGroupName `
-  --name $serverName
+  --name $serverName 
