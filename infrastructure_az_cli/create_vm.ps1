@@ -117,3 +117,4 @@ az vm open-port `
 
   # 5/6/2022 - Deployment 
   # 5/6/2022 - Deployment 2
+  # 5/6/2022 - Deployment 3
