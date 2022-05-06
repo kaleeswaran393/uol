@@ -38,7 +38,12 @@ param(
 
     [Parameter(Mandatory = $True)]  
     [String]
-    $uolsshkey
+    $uolsshkey,
+
+    [Parameter(Mandatory = $True)]  
+    [String]
+    $current_path
+    
     
 )
 
@@ -100,7 +105,7 @@ try {
         --admin-username $adminLogin `
         --ssh-key-value $uolsshkey `
         --public-ip-sku Standard `
-        --custom-data cloud-init.txt
+        --custom-data $current_path/infrastructure_az_cli/cloud-init.txt
     }
 catch {
     Write-Output "VM already exists"
@@ -114,6 +119,14 @@ az vm open-port `
   --port 80 `
   --resource-group $resourceGroupName `
   --name $serverName
+
+
+  
+az vm open-port `
+--port 443 `
+--resource-group $resourceGroupName `
+--name $serverName
+
 
   # 5/6/2022 - Deployment 
   # 5/6/2022 - Deployment 2
