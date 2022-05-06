@@ -92,7 +92,7 @@ Write-Output ""
 Write-Output "Creating VM..."
 
 try {
-    VM_PARAMETER=$( az vm create  `
+     az vm create  `
         --resource-group $resourceGroupName `
         --name $serverName `
         --image canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest  `
@@ -100,16 +100,14 @@ try {
         --admin-username $adminLogin `
         --ssh-key-value $uolsshkey `
         --custom-data cloud-init-github.txt `
-        --public-ip-sku Standard )   >> $GITHUB_ENV
+        --public-ip-sku Standard 
     }
-
 catch {
     Write-Output "VM already exists"
-    }
+}
 Write-Output "Done creating VM"
 #endregion
 
-Write-Output $VM_PARAMETER
 
 
 az vm open-port `
