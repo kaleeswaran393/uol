@@ -105,7 +105,7 @@ try {
         --admin-username $adminLogin `
         --ssh-key-value $uolsshkey `
         --public-ip-sku Standard `
-        --custom-data $current_path/infrastructure_az_cli/cloud-init.txt
+        --custom-data "./cloud-init.txt"
     }
 catch {
     Write-Output "VM already exists"
@@ -113,16 +113,14 @@ catch {
 Write-Output "Done creating VM"
 #endregion
 
-
-
 az vm open-port `
+  --priority 1000 `
   --port 80 `
   --resource-group $resourceGroupName `
   --name $serverName
 
-
-  
 az vm open-port `
+--priority 1050 `
 --port 443 `
 --resource-group $resourceGroupName `
 --name $serverName
@@ -131,3 +129,4 @@ az vm open-port `
   # 5/6/2022 - Deployment 
   # 5/6/2022 - Deployment 2
   # 5/6/2022 - Deployment 3
+    # 5/6/2022 - Deployment 4
