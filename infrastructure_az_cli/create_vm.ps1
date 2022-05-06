@@ -114,13 +114,13 @@ Write-Output "Done creating VM"
 #endregion
 
 az vm open-port `
-  --priority 1000 `
+  --priority 1100 `
   --port 80 `
   --resource-group $resourceGroupName `
   --name $serverName
 
 az vm open-port `
---priority 1050 `
+--priority 1200 `
 --port 443 `
 --resource-group $resourceGroupName `
 --name $serverName
