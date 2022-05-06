@@ -9,7 +9,7 @@ on:
     branches: 
       - main
     paths:
-      - 'uol_backend_service/**'
+      - 'initial_setup/**'
 
 jobs:
   deployNodeExperessJss:
@@ -33,5 +33,6 @@ jobs:
             sudo npm install forever -g
             sudo npm i express -y
             sudo npm i mysql2 -y
-            cd uol/uol_backend_service
-            sudo forever start index.js
+            sudo apt update
+            sudo apt install nginx -y
+            sudo ufw allow 'Nginx HTTP'

@@ -10,7 +10,7 @@ name: Azure ARM Template To Create VM
 env:
   OUTPUT_PATH: ${{ github.workspace }}
 jobs:
-  build-and-deploy:
+  createVMUsingARM:
     runs-on: ubuntu-latest
     steps:
     - name: Install Azure cli

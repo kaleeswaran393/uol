@@ -16,7 +16,7 @@ on:
       - 'infrastructure_az_cli_remove/**'
 jobs:
       
-  DeployVM:
+  createAzureVirtualMachine:
     runs-on: windows-latest
     steps:
     # checkout code from repo
