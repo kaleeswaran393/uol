@@ -99,8 +99,8 @@ try {
         --size Standard_E2bds_v5 `
         --admin-username $adminLogin `
         --ssh-key-value $uolsshkey `
-        --custom-data cloud-init-github.txt `
-        --public-ip-sku Standard 
+        --public-ip-sku Standard `
+        --custom-data cloud-init.txt
     }
 catch {
     Write-Output "VM already exists"
