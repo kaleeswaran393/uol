@@ -1,18 +1,4 @@
 
-
-
-
-         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm i express -y"
-         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm i mysql2 -y"
-        #  ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm install forever -g"
-         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo mkdir  /home/uol_admin/uol_backend_service"
-        #  ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo chown -R uol_admin:root /home/uol_admin/uol_backend_service"
-         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "cd /home/uol_admin/uol_backend_service | sudo usermod -g root uol_admin"
-         # scp -i ${{ env.OUTPUT_PATH }}\uolll  -r ${{ github.workspace }}/uol_backend_service uol_admin@20.43.168.65:/home/uol_admin/
-         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo forever start index.js"
-         #      - run: ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo apt install nodejs npm -y"
-
-
 name: Deploy Node App
 
 env:
@@ -24,7 +10,6 @@ on:
       - main
     paths:
       - 'uol_backend_service/**'
-
 jobs:
   build:
     name: Deploy Node App
@@ -39,23 +24,9 @@ jobs:
           port: 22
           script: |
             cd ~
+            sudo chown -R uol_admin:root /home/uol_admin/*
+            sudo chown -R uol_admin:root /home/uol_admin
             rm -R -f uol
-            git clone https://uol_admin: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@github.com/kaleeswaran393/uol.git
-            sudo apt install nodejs npm -y
-            sudo npm i express -y
-            sudo npm i mysql2 -y
+            git clone https://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@github.com/kaleeswaran393/uol.git
             cd uol/uol_backend_service
             sudo forever start index.js
-
-
-
-
-         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm i express -y"
-         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm i mysql2 -y"
-        #  ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo npm install forever -g"
-         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo mkdir  /home/uol_admin/uol_backend_service"
-        #  ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo chown -R uol_admin:root /home/uol_admin/uol_backend_service"
-         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "cd /home/uol_admin/uol_backend_service | sudo usermod -g root uol_admin"
-         # scp -i ${{ env.OUTPUT_PATH }}\uolll  -r ${{ github.workspace }}/uol_backend_service uol_admin@20.43.168.65:/home/uol_admin/
-         # ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo forever start index.js"
-         #      - run: ssh -i ${{ env.OUTPUT_PATH }}\uolll uol_admin@20.43.168.65 "sudo apt install nodejs npm -y"

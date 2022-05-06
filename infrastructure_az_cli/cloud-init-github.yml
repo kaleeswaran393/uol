@@ -2,30 +2,32 @@
 package_upgrade: true
 packages:
   - nginx
+  - nodejs
+  - npm
 write_files:
   - owner: www-data:www-data
     path: /etc/nginx/sites-available/default
     content: |
       server {
         listen 80;
+        listen 443 ssl;
+        ssl_certificate /etc/nginx/ssl/mycert.cert;
+        ssl_certificate_key /etc/nginx/ssl/mycert.prv;
         location / {
           proxy_pass http://localhost:3000;
           proxy_http_version 1.1;
           proxy_set_header Upgrade $http_upgrade;
           proxy_set_header Connection keep-alive;
-          proxy_set_header X-Forwarded-For $remote_addr;
           proxy_set_header Host $host;
           proxy_cache_bypass $http_upgrade;
         }
       }
+
 runcmd:
-  # install Node.js
-  - sudo apt install nodejs -y
-  - sudo apt install npm -y
-  # clone GitHub Repo into myapp directory
-  - nodejs --version
-  - npm --version
-  - npm i express
-  - npm i mysql2
-  # restart NGINX
-  - service nginx restart
+  - secretsname=$(find /var/lib/waagent/ -name "*.prv" | cut -c -57)
+  - mkdir /etc/nginx/ssl
+  - cp $secretsname.crt /etc/nginx/ssl/mycert.cert
+  - cp $secretsname.prv /etc/nginx/ssl/mycert.prv
+  - sudo apt install nodejs npm -y
+  - sudo npm i express -y
+  - sudo npm i mysql2 -y
