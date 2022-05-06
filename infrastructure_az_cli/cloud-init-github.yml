@@ -22,12 +22,26 @@ write_files:
           proxy_cache_bypass $http_upgrade;
         }
       }
+  - owner: uol_admin:uol_admin
+    path: /home/uol_admin/myapp/index.js
+    content: |
+      var express = require('express')
+      var app = express()
+      var os = require('os');
+      app.get('/', function (req, res) {
+        res.send('Hello World from host ' + os.hostname() + '!')
+      })
+      app.listen(3000, function () {
+        console.log('Hello world app listening on port 3000!')
+      })
 
 runcmd:
   - secretsname=$(find /var/lib/waagent/ -name "*.prv" | cut -c -57)
   - mkdir /etc/nginx/ssl
   - cp $secretsname.crt /etc/nginx/ssl/mycert.cert
   - cp $secretsname.prv /etc/nginx/ssl/mycert.prv
-  - sudo apt install nodejs npm -y
-  - sudo npm i express -y
-  - sudo npm i mysql2 -y
+  - service nginx restart
+  - cd "/home/uol_admin/myapp"
+  - npm init
+  - npm install express -y
+  - nodejs index.js
