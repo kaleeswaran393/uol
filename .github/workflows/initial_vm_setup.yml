@@ -1,5 +1,5 @@
 
-name: Deploy Node App
+name: Intial VM setup
 
 env:
   OUTPUT_PATH: ${{ github.workspace }}
