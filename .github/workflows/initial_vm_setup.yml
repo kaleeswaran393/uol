@@ -38,5 +38,7 @@ jobs:
             sudo apt install nginx -y
             sudo ufw allow 'Nginx HTTP'
             sudo mkdir  /etc/nginx/ssl
+            sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj "/C=SG/ST=Singapore/L=Singapore/O=Global Security/OU=IT Department/CN=uollumen.com" -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt
             sudo cp /home/uol_admin/uol/initial_setup/default /etc/nginx/sites-available
+            sudo service nginx restart
         
