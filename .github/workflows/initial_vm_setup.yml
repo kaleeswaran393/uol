@@ -29,6 +29,7 @@ jobs:
             sudo chown -R uol_admin:root /home/uol_admin/
             rm -R -f uol
             git clone https://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@github.com/kaleeswaran393/uol.git
+            sudo apt update
             sudo apt install nodejs npm -y
             sudo npm install forever -g
             sudo npm i express -y
@@ -38,5 +39,5 @@ jobs:
             sudo ufw allow 'Nginx HTTP'
             sudo mkdir  /etc/nginx/ssl
             cd  /etc/nginx/ssl
-            sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt
+            sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj '/C=SG/ST=SG/L=SG/O=SG/OU=UOL/CN=UOL' -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt
 
