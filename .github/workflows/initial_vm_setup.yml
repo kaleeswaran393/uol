@@ -41,4 +41,9 @@ jobs:
             sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj "/C=SG/ST=Singapore/L=Singapore/O=Global Security/OU=IT Department/CN=uollumen.com" -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt
             sudo cp /home/uol_admin/uol/initial_setup/default /etc/nginx/sites-available
             sudo service nginx restart
-        
+            sudo apt install wget ca-certificates
+            wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+            sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+            sudo apt update
+            sudo apt install postgresql postgresql-contrib -y
+            service postgresql status
