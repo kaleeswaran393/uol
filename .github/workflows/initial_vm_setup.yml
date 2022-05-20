@@ -1,5 +1,5 @@
 
-name: Intial VM setup
+name: VM setup
 
 env:
   OUTPUT_PATH: ${{ github.workspace }}
@@ -12,8 +12,8 @@ on:
       - 'initial_setup/**'
 
 jobs:
-  deployNodeExperessJss:
-    name: Deploy expressJs App
+  initialVMSetup:
+    name: VM setup
     runs-on: ubuntu-latest
     steps:
       - name: Deploy using ssh
@@ -46,4 +46,4 @@ jobs:
             sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
             sudo apt update
             sudo apt install postgresql postgresql-contrib -y
-            service postgresql status
+            sudo service postgresql status
