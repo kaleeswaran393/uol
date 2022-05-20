@@ -110,6 +110,8 @@ az network nsg create  --name uol_nsg  --resource-group $resourceGroupName
 
 az network nic create  --name uol_nic  --resource-group $resourceGroupName --vnet-name uol_vnet2 --subnet uol_subnet --network-security-group uol_nsg  --public-ip-address uol_invoice_VM_publicIP
 
+Start-Sleep -Seconds 20
+
 az vm create `
 --name $serverName   `
 --resource-group $resourceGroupName `
