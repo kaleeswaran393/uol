@@ -125,6 +125,12 @@ az vm open-port `
 --resource-group $resourceGroupName `
 --name $serverName
 
+az vm open-port `
+--priority 1300 `
+--port 5432 `
+--resource-group $resourceGroupName `
+--name $serverName
+
 
   # 5/6/2022 - Deployment 
   # 5/6/2022 - Deployment 2

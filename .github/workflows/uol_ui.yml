@@ -1,5 +1,5 @@
 
-name: Intial VM setup
+name: Deploy Angular UI
 
 env:
   OUTPUT_PATH: ${{ github.workspace }}
@@ -31,5 +31,5 @@ jobs:
             sudo npm install -g @angular/cli -y
             sudo npm install @azure/msal-browser @azure/msal-angular -y
             sudo npm install @angular/material @angular/cdk -y
-            sudo npm run start&
+            sudo npm run start &
         
