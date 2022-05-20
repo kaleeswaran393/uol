@@ -56,6 +56,6 @@ Write-Output "Delete VM ResourceGroup $resourceGroupName in region $resourceGrou
 
 az group delete --name  $resourceGroupName --yes
 
-#endregion
+#endregion deploy
 
 

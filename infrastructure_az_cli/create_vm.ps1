@@ -42,7 +42,13 @@ param(
 
     [Parameter(Mandatory = $True)]  
     [String]
-    $current_path
+    $current_path,
+
+    [Parameter(Mandatory = $True)]  
+    [String]
+    $ipAddress
+
+    
     
     
 )
@@ -103,7 +109,7 @@ try {
         --image canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest  `
         --size Standard_E2bds_v5 `
         --admin-username $adminLogin `
-        --public-ip-address uol_invoice_VM_publicIP `
+        --public-ip-address $ipAddress `
         --ssh-key-value $uolsshkey `
         --public-ip-sku Standard `
         --custom-data "./cloud-init.txt"
