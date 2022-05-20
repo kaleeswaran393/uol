@@ -139,5 +139,5 @@ az vm open-port `
 --name $serverName
 
 
-  # 5/6/2022 - Deployment 
+  # 5/6/2022 - Deployment 1
  
