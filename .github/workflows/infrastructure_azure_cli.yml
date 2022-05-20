@@ -43,6 +43,7 @@ jobs:
         -adminPassword ${{ secrets.VM_ADMIN_PASSWORD }} 
         -uolsshkey ${{ env.OUTPUT_PATH }}\sec.pub
         -current_path ${{ env.OUTPUT_PATH }}
+        -ipAddress ${{secrets.VM_IP_ADDRESS }}
 
   #  - name:  Virtual Machine 
   #    run: |
