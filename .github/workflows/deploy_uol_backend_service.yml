@@ -28,7 +28,7 @@ jobs:
             sudo chown -R uol_admin:root /home/uol_admin/
             sudo chown -R uol_admin:root /home/uol_admin/
             rm -R -f uol
-            git clone https://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@github.com/kaleeswaran393/uol.git
+            git clone https://${{secrets.GIT_TOKEN}}@github.com/kaleeswaran393/uol.git
             sudo apt install nodejs npm -y
             sudo npm install forever -g
             sudo npm i express -y

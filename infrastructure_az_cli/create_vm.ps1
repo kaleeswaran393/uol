@@ -103,6 +103,7 @@ try {
         --image canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest  `
         --size Standard_E2bds_v5 `
         --admin-username $adminLogin `
+        --public-ip-address uol_invoice_VM_publicIP `
         --ssh-key-value $uolsshkey `
         --public-ip-sku Standard `
         --custom-data "./cloud-init.txt"
@@ -133,8 +134,4 @@ az vm open-port `
 
 
   # 5/6/2022 - Deployment 
-  # 5/6/2022 - Deployment 2
-  # 5/6/2022 - Deployment 3
-  # 5/6/2022 - Deployment 4
-  # 5/6/2022 - Deployment 6
-  # 5/6/2022 - Deployment 4
+ 
