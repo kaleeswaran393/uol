@@ -103,17 +103,24 @@ Write-Output ""
 Write-Output "Creating VM..."
 
 try {
-     az vm create  `
-        --resource-group $resourceGroupName `
-        --name $serverName `
-        --image canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest  `
-        --size Standard_E2bds_v5 `
-        --admin-username $adminLogin `
-        --public-ip-address $ipAddress `
-        --ssh-key-value $uolsshkey `
-        --public-ip-sku Standard `
-        --custom-data "./cloud-init.txt"
-    }
+     
+az network vnet create --name uol_vnet2 --resource-group $resourceGroupName --subnet-name uol_subnet
+
+az network nsg create  --name uol_nsg  --resource-group $resourceGroupName 
+
+az network nic create  --name uol_nic  --resource-group $resourceGroupName --vnet-name uol_vnet2 --subnet uol_subnet --network-security-group uol_nsg  --public-ip-address uol_invoice_VM_publicIP
+
+az vm create `
+--name $serverName   `
+--resource-group $resourceGroupName `
+--location southeastasia  `
+--image canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest  `
+--admin-username $adminLogin  `
+--public-ip-sku Standard `
+--nics uol_nic  `
+--size Standard_E2bds_v5 
+
+}
 catch {
     Write-Output "VM already exists"
 }
