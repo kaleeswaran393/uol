@@ -113,7 +113,7 @@ az network nic create  --name uol_nic  `
 --vnet-name uol_vnet2  `
 --subnet uol_subnet  `
 --network-security-group uol_nsg   `
---public-ip-address /subscriptions/ba5cad7f-06ec-4765-aec0-c3caed478b73/resourceGroups/uol_public_ip_gp/providers/Microsoft.Network/publicIPAddresses
+--public-ip-address /subscriptions/ba5cad7f-06ec-4765-aec0-c3caed478b73/resourceGroups/uol_public_ip_gp/providers/Microsoft.Network/publicIPAddresses/uol_invoice_VM_publicIP
 
 
 
