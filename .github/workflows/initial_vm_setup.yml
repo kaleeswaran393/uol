@@ -19,7 +19,7 @@ jobs:
       - name: Deploy using ssh
         uses: appleboy/ssh-action@master
         with:
-          host: ${{secrets.VM_IP_ADDRESS }}
+          host: uollumen.southeastasia.cloudapp.azure.com
           username: uol_admin
           key: ${{secrets.SSH_PRIVATE_KEY }}
           port: 22
@@ -28,7 +28,7 @@ jobs:
             sudo chown -R uol_admin:root /home/uol_admin/
             sudo chown -R uol_admin:root /home/uol_admin/
             rm -R -f uol
-            git clone https://${{secrets.GIT_TOKEN}}@github.com/kaleeswaran393/uol.git
+            git clone https://${{ secrets.GIT_TOKEN }}@github.com/kaleeswaran393/uol.git
             sudo apt update
             sudo apt install nodejs npm -y
             sudo npm install forever -g
