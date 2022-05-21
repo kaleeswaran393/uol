@@ -27,7 +27,7 @@ jobs:
             cd ~
             sudo chown -R uol_admin:root /home/uol_admin/
             rm -R -f uol
-            git clone https://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@github.com/kaleeswaran393/uol.git
+            git clone https://${{ secrets.GIT_TOKEN }}@github.com/kaleeswaran393/uol.git
             sudo npm install -g @angular/cli -y
             sudo npm install @azure/msal-browser @azure/msal-angular -y
             sudo npm install @angular/material @angular/cdk -y
