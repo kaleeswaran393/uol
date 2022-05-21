@@ -123,6 +123,7 @@ az vm create `
 --location southeastasia  `
 --image canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest  `
 --admin-username $adminLogin  `
+--ssh-key-value $uolsshkey `
 --public-ip-sku Standard `
 --nics uol_nic  `
 --size Standard_E2bds_v5 
