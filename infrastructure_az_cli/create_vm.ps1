@@ -108,9 +108,14 @@ az network vnet create --name uol_vnet2 --resource-group $resourceGroupName --su
 
 az network nsg create  --name uol_nsg  --resource-group $resourceGroupName 
 
-az network nic create  --name uol_nic  --resource-group $resourceGroupName --vnet-name uol_vnet2 --subnet uol_subnet --network-security-group uol_nsg  --public-ip-address uol_invoice_VM_publicIP
+az network nic create  --name uol_nic  `
+--resource-group $resourceGroupName `
+--vnet-name uol_vnet2  `
+--subnet uol_subnet  `
+--network-security-group uol_nsg   `
+--public-ip-address /subscriptions/ba5cad7f-06ec-4765-aec0-c3caed478b73/resourceGroups/uol_public_ip_gp/providers/Microsoft.Network/publicIPAddresses
 
-Start-Sleep -Seconds 20
+
 
 az vm create `
 --name $serverName   `
@@ -148,5 +153,5 @@ az vm open-port `
 --name $serverName
 
 
-  # 5/6/2022 - Deployment 12w
+#deploy
  
