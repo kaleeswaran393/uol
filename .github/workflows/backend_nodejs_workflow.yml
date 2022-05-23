@@ -30,4 +30,4 @@ jobs:
             git pull
             cd backend_nodejs_app
             sudo npm install
-            sudo forever start index.js 
+            nohup sudo forever start index.js &
