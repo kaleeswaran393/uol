@@ -33,4 +33,5 @@ jobs:
             sudo npm install @azure/msal-browser @azure/msal-angular -y
             sudo npm install @angular/material @angular/cdk -y
             nohup sudo npm run start &
+            ng -v
         
