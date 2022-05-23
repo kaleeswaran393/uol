@@ -9,7 +9,7 @@ on:
     branches: 
       - main
     paths:
-      - 'install_package/**'
+      - 'package_installation_script/**'
 
 jobs:
   installSofwareAndPackages:
