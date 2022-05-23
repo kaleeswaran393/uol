@@ -12,8 +12,8 @@ on:
       - 'package_installation_script/**'
 
 jobs:
-  installSofwareAndPackages:
-    name: Install Softawre and Packages
+  installSoftwareAndPackages:
+    name: Install Software and Packages
     runs-on: ubuntu-latest
     steps:
       - name: Install Software And Packages Using SSH
