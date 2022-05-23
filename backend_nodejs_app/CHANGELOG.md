@@ -4,7 +4,7 @@
 
 * Token validation logic revised.
 
-## 08/05/2020
+## 08/05/2020  
 
 * Added issue & PR templates.
 
