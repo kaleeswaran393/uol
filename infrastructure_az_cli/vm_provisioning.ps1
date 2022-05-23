@@ -104,23 +104,32 @@ Write-Output "Creating VM..."
 
 try {
      
+Write-Output "Creating Vnet"
 az network vnet create --name uol_vnet2 --resource-group $resourceGroupName --subnet-name uol_subnet
+Write-Output "Done...."
 
+Write-Output "Creating Network Group"
 az network nsg create  --name uol_nsg  --resource-group $resourceGroupName 
+Write-Output "Done...."
 
+Write-Output "Creating public"
 az network public-ip create --resource-group  `
 uol_vm_resource_group `
 --name uol_invoice_vm_public_ip `
 --dns-name uollumen `
 --allocation-method Static 
+Write-Output "Done...."
 
+Write-Output "Creating public"
 az network nic create  --name uol_nic  `
 --resource-group $resourceGroupName `
 --vnet-name uol_vnet2  `
 --subnet uol_subnet  `
 --network-security-group uol_nsg   `
 --public-ip-address uol_invoice_vm_public_ip
+Write-Output "Done...."
 
+Write-Output "Creating Virtual Machine"
 az vm create `
 --name $serverName   `
 --resource-group $resourceGroupName `
@@ -139,30 +148,37 @@ catch {
 Write-Output "Done creating VM"
 #endregion
 
+Write-Output "Opening SSH Port"
 az vm open-port `
   --priority 1000 `
   --port 22 `
   --resource-group $resourceGroupName `
   --name $serverName
+Write-Output "Done..."
 
+Write-Output "Opening HTTP Port 80"
 az vm open-port `
   --priority 1100 `
   --port 80 `
   --resource-group $resourceGroupName `
   --name $serverName
+Write-Output "Done..."
 
+Write-Output "Opening HTTP Port 443"
 az vm open-port `
 --priority 1200 `
 --port 443 `
 --resource-group $resourceGroupName `
 --name $serverName
+Write-Output "Done..."
 
+Write-Output "Opening HTTP Port 5432"
 az vm open-port `
 --priority 1300 `
 --port 5432 `
 --resource-group $resourceGroupName `
 --name $serverName
-
+Write-Output "Done..."
 
 #Deploy Deploy
  
