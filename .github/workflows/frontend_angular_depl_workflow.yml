@@ -13,7 +13,7 @@ on:
 
 jobs:
   deployNodeExperessJss:
-    name: Deploy expressJs App
+    name: Deploy Angular App
     runs-on: ubuntu-latest
     steps:
       - name: Deploy using ssh
