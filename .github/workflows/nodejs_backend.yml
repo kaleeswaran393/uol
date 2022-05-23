@@ -1,0 +1,34 @@
+
+name: Deploy Node Backend API
+
+env:
+  OUTPUT_PATH: ${{ github.workspace }}
+
+on: 
+  push: 
+    branches: 
+      - main
+    paths:
+      - 'nodejs-webapi-master/**'
+
+jobs:
+  nodejsBackendService:
+    name: Deploy NodeJS Backend API
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy using ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.VM_IP_ADDRESS }}
+          username: uol_admin
+          key: ${{secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd ~
+            sudo chown -R uol_admin:root /home/uol_admin/
+            sudo chown -R uol_admin:root /home/uol_admin/
+            rm -R -f uol
+            git clone https://${{secrets.GIT_TOKEN}}@github.com/kaleeswaran393/uol.git            
+            cd uol/nodejs-webapi-master
+            sudo npm install
+            sudo node index.js &
