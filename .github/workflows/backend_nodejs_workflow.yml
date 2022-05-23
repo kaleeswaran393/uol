@@ -24,10 +24,10 @@ jobs:
           key: ${{secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
+            sudo kill $(sudo lsof -t -i:5000)
             cd ~/uol
             git remote add uol_invoice_repo https://${{ secrets.GIT_TOKEN }}@github.com/kaleeswaran393/uol.git           
             git pull
             cd backend_nodejs_app
             sudo npm install
-            sudo forever stop index.js
             sudo forever start index.js 
