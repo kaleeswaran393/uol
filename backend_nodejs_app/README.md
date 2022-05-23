@@ -194,7 +194,7 @@ If you find a bug in the sample, please raise the issue on [GitHub Issues](../..
 
 To provide a recommendation, visit the following [User Voice page](https://feedback.azure.com/forums/169401-azure-active-directory).
 
-## Contributing Test test test test test test
+## Contributing Test test test test test test test
 
 If you'd like to contribute to this sample, see [CONTRIBUTING.MD](/CONTRIBUTING.md).
 
