@@ -11,7 +11,7 @@ on:
       - 'vm_cleanup/**'
 jobs:
       
-  createAzureVirtualMachine:
+  deleteAzureVirtualMachine:
     runs-on: windows-latest
     steps:
     # checkout code from repo
@@ -22,7 +22,7 @@ jobs:
       run: |
         ls '${{ env.OUTPUT_PATH }}'
         
-    - name: provision virtual machine in azure
+    - name: Delete Azure VM
       env:
         RESOURCE_GROUP: uol_vm_resource_group
         RESOURCE_GROUP_REGION: southeastasia
