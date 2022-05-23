@@ -26,11 +26,12 @@ jobs:
           script: |
             cd ~
             sudo chown -R uol_admin:root /home/uol_admin/
-            rm -R -f uol
-            git clone https://${{ secrets.GIT_TOKEN }}@github.com/kaleeswaran393/uol.git
-            cd /home/uol_admin/uol/frontend_angularjs_app
+            git remote add uol_invoice_repo https://${{ secrets.GIT_TOKEN }}@github.com/kaleeswaran393/uol.git           
+            git pull
+            cd frontend_angularjs_app
             sudo npm install -g @angular/cli -y
             sudo npm install @azure/msal-browser @azure/msal-angular -y
             sudo npm install @angular/material @angular/cdk -y
+            sudo kill $(sudo lsof -t -i:4200)
             sudo npm run start &
         
