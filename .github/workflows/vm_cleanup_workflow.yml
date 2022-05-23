@@ -14,6 +14,9 @@ jobs:
   deleteAzureVirtualMachine:
     runs-on: windows-latest
     steps:
+    - name: checkout repo
+      uses: actions/checkout@v1
+      
     - name: Delete Azure VM
       env:
         RESOURCE_GROUP: uol_vm_resource_group
