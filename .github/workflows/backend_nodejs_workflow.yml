@@ -31,3 +31,4 @@ jobs:
             cd backend_nodejs_app
             sudo npm install
             nohup sudo forever start index.js &
+            ng -v
