@@ -45,11 +45,5 @@ jobs:
         -current_path ${{ env.OUTPUT_PATH }}
         -ipAddress ${{secrets.VM_IP_ADDRESS }}
 
-  #  - name:  Virtual Machine 
-  #    run: |
-  #      $publicIP=$(az vm list-ip-addresses -g uol_vm_resource_group -n uol_invoice_app_server --query "[].virtualMachine.network.publicIpAddresses[*].ipAddress" -o tsv)
-  #      echo $publicIP > ${{ env.PUBLIC_IP }}
-  #      echo ${{ env.PUBLIC_IP }}
-
 
 

@@ -108,12 +108,18 @@ az network vnet create --name uol_vnet2 --resource-group $resourceGroupName --su
 
 az network nsg create  --name uol_nsg  --resource-group $resourceGroupName 
 
+az network public-ip create --resource-group  `
+uol_vm_resource_group `
+--name uol_invoice_vm_public_ip `
+--dns-name uollumen `
+--allocation-method Static 
+
 az network nic create  --name uol_nic  `
 --resource-group $resourceGroupName `
 --vnet-name uol_vnet2  `
 --subnet uol_subnet  `
 --network-security-group uol_nsg   `
---public-ip-address /subscriptions/ba5cad7f-06ec-4765-aec0-c3caed478b73/resourceGroups/uol_public_ip_gp/providers/Microsoft.Network/publicIPAddresses/uol_invoice_VM_publicIP
+--public-ip-address uol_invoice_vm_public_ip
 
 az vm create `
 --name $serverName   `
@@ -134,6 +140,12 @@ Write-Output "Done creating VM"
 #endregion
 
 az vm open-port `
+  --priority 1000 `
+  --port 22 `
+  --resource-group $resourceGroupName `
+  --name $serverName
+
+az vm open-port `
   --priority 1100 `
   --port 80 `
   --resource-group $resourceGroupName `
@@ -152,5 +164,5 @@ az vm open-port `
 --name $serverName
 
 
-#deploy
+#Deploy Deploy
  
