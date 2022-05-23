@@ -9,7 +9,7 @@ on:
     branches: 
       - main
     paths:
-      - 'uol_ui/**'
+      - 'frontend_angularjs_app/**'
 
 jobs:
   deployNodeExperessJss:
@@ -28,7 +28,7 @@ jobs:
             sudo chown -R uol_admin:root /home/uol_admin/
             rm -R -f uol
             git clone https://${{ secrets.GIT_TOKEN }}@github.com/kaleeswaran393/uol.git
-            cd /home/uol_admin/uol/uol_ui
+            cd /home/uol_admin/uol/frontend_angularjs_app
             sudo npm install -g @angular/cli -y
             sudo npm install @azure/msal-browser @azure/msal-angular -y
             sudo npm install @angular/material @angular/cdk -y

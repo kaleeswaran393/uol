@@ -1,4 +1,4 @@
-name: 5.Delete Azure VM
+name: 1.Provision VM on Azure
 
 env:
   OUTPUT_PATH: ${{ github.workspace }}
@@ -8,10 +8,10 @@ on:
     branches: 
       - main
     paths:
-      - 'vm_cleanup/**'
+      - 'vm_creation_script/**'
 jobs:
       
-  deleteAzureVirtualMachine:
+  createAzureVirtualMachine:
     runs-on: windows-latest
     steps:
     # checkout code from repo
@@ -21,18 +21,29 @@ jobs:
     - name: look for ps1 file
       run: |
         ls '${{ env.OUTPUT_PATH }}'
+        '${{secrets.UOL_SSH_KEY }}' > ${{ env.OUTPUT_PATH }}/sec.pub
+        ls ${{ env.OUTPUT_PATH }}
         
-    - name: Delete Azure VM
+    - name: provision virtual machine in azure
       env:
         RESOURCE_GROUP: uol_vm_resource_group
         RESOURCE_GROUP_REGION: southeastasia
+        SERVER_NAME: uol_invoice_app_server
+        ADMIN_LOGIN: uol_admin
       run: >
-        powershell -command "& '${{ env.OUTPUT_PATH }}\infrastructure_az_cli_remove\delete_vm_resource.ps1'"
+        powershell -command "& '${{ env.OUTPUT_PATH }}\vm_creation_script\vm_provisioning.ps1'"
         -servicePrincipal ${{ secrets.SERVICE_PRINCIPAL_APPID }}
         -servicePrincipalSecret ${{ secrets.SERVICE_PRINCIPAL_SECRET }} 
         -servicePrincipalTenantId ${{ secrets.SERVICE_PRINCIPAL_TENANTID }} 
         -azureSubscriptionName ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         -resourceGroupName %RESOURCE_GROUP% 
         -resourceGroupNameRegion %RESOURCE_GROUP_REGION% 
+        -serverName %SERVER_NAME% 
+        -adminLogin %ADMIN_LOGIN% 
+        -adminPassword ${{ secrets.VM_ADMIN_PASSWORD }} 
+        -uolsshkey ${{ env.OUTPUT_PATH }}\sec.pub
+        -current_path ${{ env.OUTPUT_PATH }}
+        -ipAddress ${{secrets.VM_IP_ADDRESS }}
+
 
 
