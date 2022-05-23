@@ -39,7 +39,7 @@ jobs:
             sudo ufw allow 'Nginx HTTP'
             sudo mkdir  /etc/nginx/ssl
             sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj "/C=SG/ST=Singapore/L=Singapore/O=Global Security/OU=IT Department/CN=uollumen.com" -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt
-            sudo cp /home/uol_admin/uol/install_package/default /etc/nginx/sites-available
+            sudo cp /home/uol_admin/uol/package_installation_script/default /etc/nginx/sites-available
             sudo service nginx restart
             sudo apt install wget ca-certificates
             wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
