@@ -47,10 +47,6 @@ param(
     [Parameter(Mandatory = $True)]  
     [String]
     $ipAddress
-
-    
-    
-    
 )
 
 
