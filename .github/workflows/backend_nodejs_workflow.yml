@@ -25,8 +25,8 @@ jobs:
           port: 22
           script: |
             cd ~
-            cd uol/
             sudo chown -R uol_admin:root /home/uol_admin/
+            cd uol/
             git remote add uol_invoice_repo https://${{ secrets.GIT_TOKEN }}@github.com/kaleeswaran393/uol.git           
             git pull
             cd backend_nodejs_app
