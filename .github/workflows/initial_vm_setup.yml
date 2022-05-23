@@ -1,5 +1,5 @@
 
-name: Install Sofware and Packages
+name: 2. Install Sofware and Packages
 
 env:
   OUTPUT_PATH: ${{ github.workspace }}

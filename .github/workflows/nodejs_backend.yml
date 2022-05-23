@@ -1,5 +1,5 @@
 
-name: Deploy Node Backend API
+name: 4. Deploy Node Backend API
 
 env:
   OUTPUT_PATH: ${{ github.workspace }}

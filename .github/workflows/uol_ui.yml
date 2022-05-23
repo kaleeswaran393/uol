@@ -1,5 +1,5 @@
 
-name: Deploy Angular UI
+name: 3. Deploy Angular UI
 
 env:
   OUTPUT_PATH: ${{ github.workspace }}
