@@ -75,7 +75,7 @@
             }
           }
         },
-        "extract-i18n": {
+        "extract-i18n":  {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "angular11-sample-app:build"
