@@ -24,15 +24,14 @@ jobs:
           key: ${{secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd ~
-            sudo chown -R uol_admin:root /home/uol_admin/
-            cd uol
+            sudo kill $(sudo lsof -t -i:4200)
+            cd ~/uol
             git remote add uol_invoice_repo https://${{ secrets.GIT_TOKEN }}@github.com/kaleeswaran393/uol.git           
             git pull
             cd frontend_angularjs_app
             sudo npm install -g @angular/cli -y
             sudo npm install @azure/msal-browser @azure/msal-angular -y
             sudo npm install @angular/material @angular/cdk -y
-            sudo kill $(sudo lsof -t -i:4200)
+            
             sudo npm run start &
         
