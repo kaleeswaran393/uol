@@ -26,9 +26,9 @@ jobs:
           script: |
             cd ~
             sudo chown -R uol_admin:root /home/uol_admin/
-            sudo chown -R uol_admin:root /home/uol_admin/
             rm -R -f uol
             git clone https://${{secrets.GIT_TOKEN}}@github.com/kaleeswaran393/uol.git            
             cd uol/backend_nodejs_app
             sudo npm install
-            sudo node index.js &
+            sudo forever stop index.js
+            sudo forever start index.js &
