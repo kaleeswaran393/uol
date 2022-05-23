@@ -32,6 +32,6 @@ jobs:
             sudo npm install -g @angular/cli -y
             sudo npm install @azure/msal-browser @azure/msal-angular -y
             sudo npm install @angular/material @angular/cdk -y
-            nohup sudo npm run start  < /dev/null & > /dev/null && exit
+            sudo forever start node_modules/@angular/cli/bin/ng serve
             
         
