@@ -16,7 +16,7 @@ jobs:
     name: VM setup
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy using ssh
+      - name: Install Software And Packages Using SSH
         uses: appleboy/ssh-action@master
         with:
           host: uollumen.southeastasia.cloudapp.azure.com
