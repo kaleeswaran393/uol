@@ -64,7 +64,7 @@
  */
 export const protectedResources = {
   todoListApi: {
-    endpoint: "http://localhost:5000/api/todolist",
+    endpoint: "https://uollumen.southeastasia.cloudapp.azure.com/api/todolist",
     scopes: ["https://oullumen.onmicrosoft.com/uol_lumen_web_api/tasks.read"],
   },
 }
